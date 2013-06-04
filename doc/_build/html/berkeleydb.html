@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>How to use Berkeley DB in AppScale? &mdash; AppScale 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="AppScale 1 documentation" href="index.html" />
+    <link rel="prev" title="APIs" href="api.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="api.html" title="APIs"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">AppScale 1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="how-to-use-berkeley-db-in-appscale">
+<span id="berkeleydb"></span><h1>How to use Berkeley DB in AppScale?<a class="headerlink" href="#how-to-use-berkeley-db-in-appscale" title="Permalink to this headline">¶</a></h1>
+<p>This document is meant to briefly introduce how to use AppScale with Berkeley DB as the datastore database. There are mainly two steps.</p>
+<div class="section" id="reinstall-appscale-and-appscale-tools">
+<h2>Reinstall AppScale and AppScale Tools<a class="headerlink" href="#reinstall-appscale-and-appscale-tools" title="Permalink to this headline">¶</a></h2>
+<p>In order to make AppScale run with Berkeley DB, you need to reinstall AppScale and AppScale Tools using our modified version. In order to install AppScale:</p>
+<div class="highlight-python"><pre>cd /root/appscale/debian/
+bash appscale_build.sh</pre>
+</div>
+<p>In order to install AppScale Tools:</p>
+<div class="highlight-python"><pre>cd /root/appscale-tools/
+bash appscale_build.sh</pre>
+</div>
+</div>
+<div class="section" id="change-the-configuration-file">
+<h2>Change the configuration file<a class="headerlink" href="#change-the-configuration-file" title="Permalink to this headline">¶</a></h2>
+<p>In order to let AppScale know that you want to use Berkeley DB as the database, you need to modify the configuration file <tt class="docutils literal"><span class="pre">AppScalefile</span></tt>. Find <tt class="docutils literal"><span class="pre">table</span> <span class="pre">:</span> <span class="pre">'cassandra'</span></tt> and change it to</p>
+<div class="highlight-python"><pre>table : 'berkeleydb'</pre>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">How to use Berkeley DB in AppScale?</a><ul>
+<li><a class="reference internal" href="#reinstall-appscale-and-appscale-tools">Reinstall AppScale and AppScale Tools</a></li>
+<li><a class="reference internal" href="#change-the-configuration-file">Change the configuration file</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="api.html"
+                        title="previous chapter">APIs</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/berkeleydb.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="api.html" title="APIs"
+             >previous</a> |</li>
+        <li><a href="index.html">AppScale 1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Honglei Liu.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

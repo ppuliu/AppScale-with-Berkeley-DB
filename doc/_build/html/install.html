@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>How to install? &mdash; AppScale 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="AppScale 1 documentation" href="index.html" />
+    <link rel="next" title="How to use AppScale?" href="use.html" />
+    <link rel="prev" title="Introduction" href="intro.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="use.html" title="How to use AppScale?"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="intro.html" title="Introduction"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">AppScale 1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="how-to-install">
+<span id="install"></span><h1>How to install?<a class="headerlink" href="#how-to-install" title="Permalink to this headline">¶</a></h1>
+<p>This document shows the basic steps of installing AppScale on a laptop.</p>
+<div class="section" id="install-virtualbox">
+<h2>Install VirtualBox<a class="headerlink" href="#install-virtualbox" title="Permalink to this headline">¶</a></h2>
+<p>Download and install VirtualBox on your host machine using these <a class="reference external" href="http://www.virtualbox.org/wiki/Downloads">instructions</a>.</p>
+</div>
+<div class="section" id="install-vagrant">
+<h2>Install Vagrant<a class="headerlink" href="#install-vagrant" title="Permalink to this headline">¶</a></h2>
+<p>Download and install Vagrant on your host machine using these <a class="reference external" href="http://docs.vagrantup.com/v2/installation/">directions</a>.</p>
+</div>
+<div class="section" id="install-appscale-tools-on-local-machine">
+<h2>Install AppScale tools on local machine<a class="headerlink" href="#install-appscale-tools-on-local-machine" title="Permalink to this headline">¶</a></h2>
+<p>First, Install <a class="reference external" href="http://mxcl.github.com/homebrew/">homebrew</a>.</p>
+<p>Make sure that homebrew is installed properly with <tt class="docutils literal"><span class="pre">brew</span> <span class="pre">doctor</span></tt>. Fix all issues if there are any.</p>
+<p>Then, get latest appscale tools. If a newer version is available at the <a class="reference external" href="http://download.appscale.com/">appscale download page</a>, please update this page accordingly.</p>
+<div class="highlight-python"><pre>brew install wget
+wget https://github.com/AppScale/appscale-tools/archive/1.6.9.tar.gz -O appscale-tools-1.6.9.tar.gz
+tar xvf appscale-tools-1.6.9.tar.gz
+./appscale-tools-1.6.9/osx/appscale_install.sh</pre>
+</div>
+<p>Update PATH</p>
+<div class="highlight-python"><pre>export PATH="$PATH:/usr/local/appscale-tools/bin"</pre>
+</div>
+</div>
+<div class="section" id="register-the-image-with-vagrant">
+<h2>Register the Image with Vagrant<a class="headerlink" href="#register-the-image-with-vagrant" title="Permalink to this headline">¶</a></h2>
+<p>To register an AppScale virtual machine (VM) with vagrant, execute the following:</p>
+<div class="highlight-python"><pre>mkdir -p ~/appscale
+cd ~/appscale
+vagrant box add appscale1.6.9 http://download.appscale.com/download/AppScale%201.6.9%20VirtualBox%20Image
+vagrant init</pre>
+</div>
+</div>
+<div class="section" id="configure-and-start-your-virtual-machine">
+<h2>Configure and start your virtual machine<a class="headerlink" href="#configure-and-start-your-virtual-machine" title="Permalink to this headline">¶</a></h2>
+<p>The <tt class="docutils literal"><span class="pre">vagrant</span> <span class="pre">init</span></tt> command above creates a <tt class="docutils literal"><span class="pre">Vagrantfile</span></tt> in the current directory. Next, we need to modify this file to give our VM an IP address that our host machine can access it on. To do this, open <tt class="docutils literal"><span class="pre">Vagrantfile</span></tt> and modify the following lines</p>
+<div class="highlight-python"><pre>config.vm.network :hostonly, "192.168.33.10"
+config.vm.box = "appscale1.6.9"
+config.vm.customize ["modifyvm", :id, "--memory", 2048]</pre>
+</div>
+<p>Next, start your AppScale virtual machine, ssh into it, and change the root password:</p>
+<div class="highlight-python"><pre>vagrant up
+vagrant ssh
+sudo -s passwd
+exit</pre>
+</div>
+</div>
+<div class="section" id="start-and-shutdown-appscale">
+<h2>Start and shutdown AppScale<a class="headerlink" href="#start-and-shutdown-appscale" title="Permalink to this headline">¶</a></h2>
+<p>Start AppScale by running:</p>
+<div class="highlight-python"><pre>appscale up</pre>
+</div>
+<p>Shut down your apps and AppScale deployment by running:</p>
+<div class="highlight-python"><pre>appscale down</pre>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">How to install?</a><ul>
+<li><a class="reference internal" href="#install-virtualbox">Install VirtualBox</a></li>
+<li><a class="reference internal" href="#install-vagrant">Install Vagrant</a></li>
+<li><a class="reference internal" href="#install-appscale-tools-on-local-machine">Install AppScale tools on local machine</a></li>
+<li><a class="reference internal" href="#register-the-image-with-vagrant">Register the Image with Vagrant</a></li>
+<li><a class="reference internal" href="#configure-and-start-your-virtual-machine">Configure and start your virtual machine</a></li>
+<li><a class="reference internal" href="#start-and-shutdown-appscale">Start and shutdown AppScale</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="intro.html"
+                        title="previous chapter">Introduction</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="use.html"
+                        title="next chapter">How to use AppScale?</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/install.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="use.html" title="How to use AppScale?"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="intro.html" title="Introduction"
+             >previous</a> |</li>
+        <li><a href="index.html">AppScale 1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Honglei Liu.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

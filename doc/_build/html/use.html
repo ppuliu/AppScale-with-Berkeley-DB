@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>How to use AppScale? &mdash; AppScale 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="AppScale 1 documentation" href="index.html" />
+    <link rel="next" title="APIs" href="api.html" />
+    <link rel="prev" title="How to install?" href="install.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="api.html" title="APIs"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="install.html" title="How to install?"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">AppScale 1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="how-to-use-appscale">
+<span id="use"></span><h1>How to use AppScale?<a class="headerlink" href="#how-to-use-appscale" title="Permalink to this headline">¶</a></h1>
+<p>This document shows how to use AppScale tools to deploy, remove and stop an instance on AppScale.</p>
+<div class="section" id="deploying-apps-to-appscale">
+<h2>Deploying Apps to AppScale<a class="headerlink" href="#deploying-apps-to-appscale" title="Permalink to this headline">¶</a></h2>
+<p>Once you&#8217;ve got AppScale started, you can deploy Google App Engine applications to it.</p>
+<div class="highlight-python"><pre>appscale deploy ~/path-to-your-app</pre>
+</div>
+</div>
+<div class="section" id="removing-apps-from-appscale">
+<h2>Removing Apps from AppScale<a class="headerlink" href="#removing-apps-from-appscale" title="Permalink to this headline">¶</a></h2>
+<p>Once you decide you no longer want to have AppScale host an application, you can run &#8220;appscale remove appname&#8221; to remove that app (presuming that your app was called &#8220;appname&#8221;).</p>
+<div class="highlight-python"><pre>appscale remove guestbook</pre>
+</div>
+</div>
+<div class="section" id="seeing-how-appscale-is-doing">
+<h2>Seeing How AppScale is Doing<a class="headerlink" href="#seeing-how-appscale-is-doing" title="Permalink to this headline">¶</a></h2>
+<p>You can also use the AppScale Tools to query the status of your AppScale deployment, by running &#8220;appscale status&#8221;.</p>
+<div class="highlight-python"><pre>appscale status</pre>
+</div>
+</div>
+<div class="section" id="logging-into-your-appscale-vms">
+<h2>Logging into Your AppScale VMs<a class="headerlink" href="#logging-into-your-appscale-vms" title="Permalink to this headline">¶</a></h2>
+<p>AppScale runs over Ubuntu Lucid virtual machines. Should you need to log into the machines for any reason, you can run &#8220;appscale ssh integer&#8221; to log into the machine with id &#8220;integer&#8221; as root. Since &#8220;appscale ssh 0&#8221; is the most common machine to log into, you can also use &#8220;appscale ssh&#8221; as shorthand for &#8220;appscale ssh 0&#8221;.</p>
+<div class="highlight-python"><pre>appscale ssh</pre>
+</div>
+</div>
+<div class="section" id="stopping-appscale">
+<h2>Stopping AppScale<a class="headerlink" href="#stopping-appscale" title="Permalink to this headline">¶</a></h2>
+<p>Once you&#8217;re done running AppScale and you want to tear it down, run &#8220;appscale down&#8221;. If running in a cloud deployment, this terminates the machines that &#8220;appscale up&#8221; created, but if running in a cluster deployment, this stops all the API services we started when we ran &#8220;appscale up&#8221;.</p>
+<div class="highlight-python"><pre>appscale down</pre>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">How to use AppScale?</a><ul>
+<li><a class="reference internal" href="#deploying-apps-to-appscale">Deploying Apps to AppScale</a></li>
+<li><a class="reference internal" href="#removing-apps-from-appscale">Removing Apps from AppScale</a></li>
+<li><a class="reference internal" href="#seeing-how-appscale-is-doing">Seeing How AppScale is Doing</a></li>
+<li><a class="reference internal" href="#logging-into-your-appscale-vms">Logging into Your AppScale VMs</a></li>
+<li><a class="reference internal" href="#stopping-appscale">Stopping AppScale</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="install.html"
+                        title="previous chapter">How to install?</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="api.html"
+                        title="next chapter">APIs</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/use.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="api.html" title="APIs"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="install.html" title="How to install?"
+             >previous</a> |</li>
+        <li><a href="index.html">AppScale 1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Honglei Liu.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

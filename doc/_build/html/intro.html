@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Introduction &mdash; AppScale 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="AppScale 1 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="index.html">AppScale 1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="introduction">
+<span id="intro"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>This document is meant to briefly introduce AppScale, give a look at what AppScale is and why we want to use it.</p>
+<div class="section" id="what-is-google-app-engine">
+<h2>What is Google App Engine?<a class="headerlink" href="#what-is-google-app-engine" title="Permalink to this headline">¶</a></h2>
+<p>Google App Engine lets you run web applications on Google&#8217;s infrastructure. App Engine applications are easy to build, easy to maintain, and easy to scale as your traffic and data storage needs grow. With App Engine, there are no servers to maintain: You just upload your application, and it&#8217;s ready to serve your users.</p>
+<p>You can serve your app from your own domain name (such as <a class="reference external" href="http://www.example.com/">http://www.example.com/</a>) using <a class="reference external" href="http://www.google.com/a/">Google Apps</a>. Or, you can serve your app using a free name on the appspot.com domain. You can share your application with the world, or limit access to members of your organization.</p>
+<p>Google App Engine supports apps written in several programming languages. With App Engine&#8217;s Java runtime environment, you can build your app using standard Java technologies, including the JVM, Java servlets, and the Java programming language—or any other language using a JVM-based interpreter or compiler, such as JavaScript or Ruby. App Engine also features two dedicated Python runtime environments, each of which includes a fast Python interpreter and the Python standard library. Finally, App Engine provides a Go runtime environment that runs natively compiled Go code. These runtime environments are built to ensure that your application runs quickly, securely, and without interference from other apps on the system.</p>
+<p>With App Engine, you only pay for what you use. There are no set-up costs and no recurring fees. The resources your application uses, such as storage and bandwidth, are measured by the gigabyte, and billed at competitive rates. You control the maximum amounts of resources your app can consume, so it always stays within your budget.</p>
+<p>App Engine costs nothing to get started. All applications can use up to 1 GB of storage and enough CPU and bandwidth to support an efficient app serving around 5 million page views a month, absolutely free. When you enable billing for your application, your free limits are raised, and you only pay for resources you use above the free levels.</p>
+</div>
+<div class="section" id="what-is-appscale">
+<h2>What is AppScale?<a class="headerlink" href="#what-is-appscale" title="Permalink to this headline">¶</a></h2>
+<p>AppScale implements Google&#8217;s Cloud Platform, App Engine, in open source. In addition to executing your scalable web apps and mobile endpoints on Google&#8217;s resources, AppScale lets you execute them everywhere else &#8211; on your laptop, behind your firewall, on your datacenter, or on your favorite public or private cloud infrastructure. AppScale is free and easy to use and thus brings Google&#8217;s &#8220;best practices&#8221; to devs, giving them the ability to focus on their innovation and MVP without lock-in.</p>
+<p>The AppScale code base, written primarily in the Python programming language, provides the glue code that links these technologies together dynamically with the apps that use them. AppScale automatically configures, deploys, and scales this software across a distributed system.</p>
+<p>When AppScale is deployed, the AppScale tools automatically assign one or more roles to each deployed VM instance. Using this deployment model, AppScale is able to provide fault tolerance and elasticity automatically and in a straightforward manner, since any VM can take on any role on-demand.</p>
+</div>
+<div class="section" id="why-appscale">
+<h2>Why AppScale?<a class="headerlink" href="#why-appscale" title="Permalink to this headline">¶</a></h2>
+<p>The set of features that AppScale brings developers and that sets AppScale apart include:</p>
+<ul class="simple">
+<li>Only production-ready platform with full Google App Engine compatibility</li>
+<li>Unlocked deployment options – execute on your favorite public/private cloud system</li>
+<li>Easy installation and use</li>
+<li>The sweet spot between NoOps and DevOps: convenience vs flexibility and control</li>
+<li>Customer choice of services for API plug-ins</li>
+<li>Automatic configuration, deployment, and scaling and fault tolerance of apps and their   service ecosystems</li>
+<li>Portable and hybrid app deployment across clouds and services</li>
+<li>Uniformity across development, test, and production deployments</li>
+<li>Open, free, customizable execution environment for web apps, services, and mobile backends</li>
+<li>AppScale products for programmer productivity, code/data backup, disaster recovery and more</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Introduction</a><ul>
+<li><a class="reference internal" href="#what-is-google-app-engine">What is Google App Engine?</a></li>
+<li><a class="reference internal" href="#what-is-appscale">What is AppScale?</a></li>
+<li><a class="reference internal" href="#why-appscale">Why AppScale?</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/intro.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="index.html">AppScale 1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Honglei Liu.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

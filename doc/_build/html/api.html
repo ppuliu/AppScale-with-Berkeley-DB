@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>APIs &mdash; AppScale 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="AppScale 1 documentation" href="index.html" />
+    <link rel="prev" title="How to use AppScale?" href="use.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="use.html" title="How to use AppScale?"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">AppScale 1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="apis">
+<span id="api"></span><h1>APIs<a class="headerlink" href="#apis" title="Permalink to this headline">¶</a></h1>
+<p>This document is meant to introduce the APIs AppScale provides, including Google App Engine APIs and some other APIs.</p>
+<div class="section" id="google-app-engine-apis">
+<h2>Google App Engine APIs<a class="headerlink" href="#google-app-engine-apis" title="Permalink to this headline">¶</a></h2>
+<p>Foremost, AppScale provides implementations for the Google App Engine APIs. These APIs provide several scalable services which can be leveraged by a Google App Engine application. The Google App Engine APIs are Blobstore, Channel, Datastore, Images, Memcache, Namespaces, TaskQueue, Users, URL Fetch, and XMPP. Google App Engine provides an overview of the APIs and their functionality at <a class="reference external" href="http://code.google.com/appengine/docs/">http://code.google.com/appengine/docs/</a>. AppScale emulates this functionality using open source software systems, tools, and services, as well as new components.</p>
+<p><tt class="docutils literal"><span class="pre">Blobstore</span> <span class="pre">API</span></tt>
+The Blobstore API enables users to store large entities of text or binary data.</p>
+<p><tt class="docutils literal"><span class="pre">Channel</span> <span class="pre">API</span></tt>
+The Channel API allows applications to push messages from the application server to a client’s browser.</p>
+<p><tt class="docutils literal"><span class="pre">Datastore</span> <span class="pre">API</span></tt>
+The Datastore API allows for the persistence of data.</p>
+<p><tt class="docutils literal"><span class="pre">Images</span> <span class="pre">API</span></tt>
+The Images API facilitates programmatic manipulation of images.</p>
+<p><tt class="docutils literal"><span class="pre">Memcache</span> <span class="pre">API</span></tt>
+The Memcache API permits applications to store their frequently used data in a distributed memory grid.</p>
+<p><tt class="docutils literal"><span class="pre">Namespace</span> <span class="pre">API</span></tt>
+The Namespace API implements the ability to segregate data into different namespaces.</p>
+<p><tt class="docutils literal"><span class="pre">Task</span> <span class="pre">Queue</span> <span class="pre">API</span></tt>
+The Google App Engine platform lacks the ability to do threading or computations within a request greater than 30 seconds.</p>
+<p><tt class="docutils literal"><span class="pre">Users</span> <span class="pre">API</span></tt>
+The Users API provides authentication for web applications through the use of cookies.</p>
+<p><tt class="docutils literal"><span class="pre">URL</span> <span class="pre">Fetch</span> <span class="pre">API</span></tt>
+The URL Fetch API enables an application the ability to do POST and GET requests on remote resources.</p>
+<p><tt class="docutils literal"><span class="pre">XMPP</span> <span class="pre">API</span></tt>
+The XMPP API presents the ability to receive and send messages to users with a valid XMPP account.</p>
+</div>
+<div class="section" id="mapreduce-streaming-apis">
+<h2>MapReduce Streaming APIs<a class="headerlink" href="#mapreduce-streaming-apis" title="Permalink to this headline">¶</a></h2>
+<p>Through Hadoop Streaming, users can specify a Mapper and Reducer pro- gram that can run under the MapReduce programming paradigm. Fault-tolerance and data replication is automatically handled by the Hadoop Streaming framework, and AppScale exposes a simple API that interfaces to Hadoop Stream- ing. This API is:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">putMRInput(data,</span> <span class="pre">inputLoc)</span></tt>: Given a string ”data” and a Hadoop file system location “inputLoc”, creates a file on the Hadoop file system named “inputLoc”</li>
+<li><tt class="docutils literal"><span class="pre">runMRJob(mapper,</span> <span class="pre">reducer,</span> <span class="pre">inputLoc,</span> <span class="pre">outputLoc,</span> <span class="pre">config)</span></tt>: Given the relative paths to a mapper and reducer file (relative to the main Python file being run), run a Hadoop MapReduce Streaming job. Input is fed to the program via the HDFS file named “inputLoc”, and output is fed to the HDFS file named “outputLoc”. If a hash is passed as ”config”, the key / value pairs are passed as configuration options to Hadoop Streaming.</li>
+<li><tt class="docutils literal"><span class="pre">getMROutput(outputLoc)</span></tt>: Given a Hadoop file system location “outputLoc”, returns a string with the contents of the named file.</li>
+<li><tt class="docutils literal"><span class="pre">writeTempFile(suffix,</span> <span class="pre">data)</span></tt>: Writes a file to /tmp on the local machine with the contents data. Is useful for passing a file with nodes to exclude from MapReduce jobs.</li>
+<li><tt class="docutils literal"><span class="pre">getAllIPs()</span></tt>: Returns an array of all the IPs in the AppScale cloud. Is useful for excluding or including nodes based on some user-defined application logic.</li>
+<li><tt class="docutils literal"><span class="pre">getNumOfNodes()</span></tt>: Returns an integer with the number of nodes in the AppScale cloud. Is useful for deter- mining at MapReduce run time, how many Map tasks and Reduce tasks should be run for optimal performance (recommended value is 1 Map task per node).</li>
+<li><tt class="docutils literal"><span class="pre">getMRLogs(outputLoc)</span></tt>: Returns a string with the MapReduce job log for the job whose output is located at outputLoc. Data is returned as a combination of XML and key / value pairs, in the standard Hadoop format.</li>
+</ul>
+</div>
+<div class="section" id="ec2-apis">
+<h2>EC2 APIs<a class="headerlink" href="#ec2-apis" title="Permalink to this headline">¶</a></h2>
+<p>AppScale provides an Amazon EC2 API. Users can use this API to spawn virtual machines and manage them entirely through an AppScale web service. The main functions this API provides mirror those of the EC2 command line tools:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">ec2_run</span> <span class="pre">instances(options)</span></tt>: Spawns virtual machines with the specified options (interpreted as command-line arguments).</li>
+<li><tt class="docutils literal"><span class="pre">ec2_describe</span> <span class="pre">instances()</span></tt>: Returns the status of all machines owned by the current user.</li>
+<li><tt class="docutils literal"><span class="pre">ec2_terminate</span> <span class="pre">instances(options)</span></tt>: Terminates virtual machines with the specified options (interpreted as command-</li>
+</ul>
+<p>line arguments).</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">ec2_add</span> <span class="pre">keypair(options)</span></tt>: Creates a new SSH key-pair that can be used to log in to virtual machines that are spawned with this key-pair’s name.</li>
+<li><tt class="docutils literal"><span class="pre">ec2_elete</span> <span class="pre">keypair(options)</span></tt>: Deletes the named SSH key-pair from the underlying cloud infrastructure.</li>
+<li><tt class="docutils literal"><span class="pre">ec2_describe</span> <span class="pre">availability</span> <span class="pre">zones(options)</span></tt>: In Eucalyptus, this returns information relating to the number of vir-</li>
+</ul>
+<p>tual machines available to be spawned by users.</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">ec2_describe</span> <span class="pre">images()</span></tt>: Returns information about the virtual machine images, ramdisks, and kernels that are available for use in the system.</li>
+<li><tt class="docutils literal"><span class="pre">ec2_reboot</span> <span class="pre">instances(options)</span></tt>: Reboots virtual machines with the specified options (interpreted as command- line arguments).</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">APIs</a><ul>
+<li><a class="reference internal" href="#google-app-engine-apis">Google App Engine APIs</a></li>
+<li><a class="reference internal" href="#mapreduce-streaming-apis">MapReduce Streaming APIs</a></li>
+<li><a class="reference internal" href="#ec2-apis">EC2 APIs</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="use.html"
+                        title="previous chapter">How to use AppScale?</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/api.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="use.html" title="How to use AppScale?"
+             >previous</a> |</li>
+        <li><a href="index.html">AppScale 1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Honglei Liu.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>
